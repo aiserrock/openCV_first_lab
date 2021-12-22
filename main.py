@@ -75,8 +75,7 @@ def binarization(light):
 
 def remove_noise(binarized):
     img = cv2.imread(binarized)
-    # получим примитив (двумерный массив 7х7 заполненный единицами)
-    # таким образом получили структуризирующий элемент для след операции
+    # таким образом получили структуризирующий элемент примитив(элипс 13х9 из единиц) для след операции
     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (13, 9))
     # используется мофрологическая опперация ОТКРЫТИЕ (эррозия -> диллатация)
     # см. методичка стр.87
@@ -86,7 +85,7 @@ def remove_noise(binarized):
 
 def main():
     # 1. осветляем изображение
-    light = brightness_correction(IMAGES_PATH + 'robo3.jpeg')
+    light = brightness_correction(IMAGES_PATH + 'robo1.jpeg')
     # 2. бинаризация
     binarized = binarization(light)
     # 3. удаление шумов
